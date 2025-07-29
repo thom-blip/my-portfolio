@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samson Dev</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      max-width: 1200px;
+      color: #000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: max-content;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .nav-container {
+      margin: auto;
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+    }
+
+    .nav-icons a {
+      color: #444;
+      font-size: 1.7rem;
+      transition: 0.3s ease;
+      filter: hue-rotate(130deg) contrast(120%);
+    }
+
+    .nav-icons a:hover,
+    .nav-icons a.active {
+      color: #000;
+      transform: scale(1.2);
+    }
+
+    .nav-button {
+      padding: 0.6rem 1.5rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 3rem;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 120px 0 60px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .profile-picture{
+      border: 5px solid black;
+      border-radius: 50%;
+      width: 9rem;
+      height: 9rem;
+      margin-bottom: 2rem;
+      background-image: url(IMG_0125.JPG);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    #hero {
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: #111;
+    }
+
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+     .sec-button {
+      padding: 0.6rem 1.2rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-left: 1.2rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+
+    .sec-button:hover,
+    .sec-button:active{
+       transform: scale(1.2);
+    }
+
+    #about h2 {
+      margin-bottom: 1.2rem;
+    }
+
+    #about p {
+      max-width: 800px;
+      color: #555;
+    }
+
+    .bold{
+      color: #000;
+      font-size: large;
+    }
+
+    #projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #f8f8f8;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border: 1px solid #000;
+    }
+
+    #skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding-top: 1rem;
+    }
+
+    #skills li {
+      background: #efefef;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      border: 1px solid #ccc;
+    }
+
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 0.8rem;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      color: #000;
+      resize: none;
+    }
+
+    #contact button {
+      padding: 0.8rem;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: #f1f1f1;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        width: auto;
+      }
+
+     
+      .nav-icons a {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 430px) and (min-width:320px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 40%;
+        padding: 0.5rem;
+        
+      }
+
+       nav{
+        width: fit-content;
+        margin-top: 3%;
+        z-index: 999;
+        float: right;
+        margin-right: 5%;
+      }
+
+      .nav-icons{
+        gap: 37%;
+        flex-direction: column;
+        
+      }
+
+      .nav-icons a {
+        font-size: 1.4rem;
+        margin-bottom: 53%;
+      }
+
+      .nav-button{
+        display: none;
+      }
+
+      body{
+        width: 100vw;
+        margin: 0;
+        box-shadow: none
+      }
+      
+      .page-wrapper{
+        width: fit-content;
+        margin: 0 2%;
+      }
+
+      p{
+        max-width: fit-content;
+      }
+
+      .mobile{
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav data-aos="fade-down" data-aos-duration="1500" >
+    <div class="nav-container">
+      <div class="nav-inner">
+        <div class="nav-icons">
+          <a href="#hero" class="active"><i class="fas fa-home"></i></a>
+          <a class="mobile" href="#about"><i class="fas fa-user-astronaut"></i></a>
+          <a class="mobile" href="#projects"><i class="fas fa-cubes"></i></a>
+          <a class="mobile" href="#skills"><i class="fas fa-laptop-code"></i></a>
+          <a class="mobile" href="#contact"><i class="fas fa-comment-dots"></i></a>
+           <button class="nav-button">Book a Call</button>
+        </div>
+       
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <section data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-back"
+            data-aos-delay="300"
+            data-aos-offset="0"
+            data-aos-duration="1500" id="hero">
+      <div class="profile-picture">
+        
+      </div>
+      <h1>Hi, I'm Thomson 👨‍💻. <br>Designer & Developer</h1>
+      <p>From sketch to screen - I build what you envision, I design with purpose and develop with precision </p>
+       <button class="sec-button">Hire me</button>
+       <button class="sec-button"href="#about">Learn more</button>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p> Hello there - I'm Samson, part designer, part developer and a full-time pixel perfectionist with over 2 years of experience, born and bred in Nigeria. </p>
+      <br>
+      <p> <b class="bold">Here's what i actually do:</b>  I turn your ideas into interactive experiences, crafting websites that <i>feel</i> as good as they look.</p> 
+      <br>
+      <p>Think of me as a bridge between logic and creativity - fluent in code, obsessed with clean designs and believe me when i say, always chasing that perfect user moment. I don't just build websites... I craft experiences that changes every perspective, mindset and boost whatever my client stands for because I know what I am doing.</p>
+      <br>
+      <p>Got an idea? I'll code it. Need a vibe? I'll design it. Want both? Expect something out of this world 🌍</p>
+      <br>
+      <p><b class="bold">What to expect:</b> 
+        <br><br>
+      <p><b class="bold">💡Creative Thinking-</b> I don't do cookie-cutter. Every of my project starts with fresh ideas and unique concepts. <br>   <b class="bold">source-</b> Trust me.</p>
+      <br>
+      <p><b class="bold"> 📐Clean,Responsive Code-</b> Nothing is more unappealing than an unresponsive website, expect pixel-perfect builds, from desktop to mobile leave it to me. </p>
+      <br>
+      <p><b class="bold">🧩Smooth Collabs-</b>Expect clear updates, teamwork, fast turnarounds, and lets just say... I always keep to the time.</p>
+      <br>
+      <p><b class="bold">🧠Quick Learner-</b>I tend to learn quicker, any new thing you want me to learn. Bring it on. <br>As we all know, it's impossible to know everything.</p>
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>Personal Portfolio</h3>
+        <p>Responsive HTML/CSS/JS site showcasing my skills and projects.</p>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>Full-stack to-do app with Node.js, MongoDB, and Express backend.</p>
+      </div>
+      <div class="project-card">
+        <h3>Blog Platform</h3>
+        <p>MDX-based blog using Next.js with CMS integration.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Node.js</li>
+        <li>MongoDB</li>
+        <li>Git</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      &copy; Thomson Dev. All rights reserved.
+    </footer>
+  </div>
+
+
+
+
+
+
+
+
+
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
+</body>
+</html>
